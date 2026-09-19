@@ -544,8 +544,13 @@ section{padding:80px 24px;max-width:1200px;margin:0 auto}
   transform:translateY(-8px) rotate(0) scale(1.02);
   box-shadow:12px 12px 0 rgba(244,114,182,.5),0 20px 44px rgba(0,0,0,.42);
 }
-.gallery-img-wrap{height:auto!important;border-bottom:none!important;background:transparent!important;border-radius:10px;overflow:hidden}
-.gallery-img-wrap img{width:100%;height:auto!important;object-fit:contain!important;border-radius:10px}
+.gallery-img-wrap{height:auto!important;border-bottom:none!important;border-radius:10px;overflow:hidden;
+  background-color:var(--bg-inner);background-size:cover;background-position:center;
+  background-repeat:no-repeat;transition:background-size .3s ease}
+.gallery-img-wrap img{width:100%;height:auto!important;object-fit:contain!important;border-radius:10px;
+  opacity:0;transition:opacity .38s ease}
+.gallery-img-wrap img.g-loaded{opacity:1}
+.gallery-img-wrap picture{display:block;width:100%}
 .gallery-info{padding:14px 6px 18px!important}
 .gallery-tag{
   display:inline-block;padding:3px 10px;border-radius:999px;margin-bottom:8px;
@@ -639,7 +644,6 @@ section{padding:80px 24px;max-width:1200px;margin:0 auto}
 <style id="site-picture">
 .gallery-img-wrap picture{display:block;width:100%}
 .avatar-pic{display:block;position:relative;z-index:1}
-.gallery-img-wrap img{background:var(--bg-inner)}
 </style>
 </head>
 <body>
@@ -924,23 +928,33 @@ const resume = {
     }
   ],
   gallery: [
-    { image: "assets/wuzhou-dunhuang.jpg", thumb: "assets/thumb/wuzhou-dunhuang.jpg", thumbWebp: "assets/thumb/wuzhou-dunhuang.webp", w: 720, h: 671,
+    { image: "assets/wuzhou-dunhuang.jpg", thumb: "assets/thumb/wuzhou-dunhuang.jpg", thumbWebp: "assets/thumb/wuzhou-dunhuang.webp",
+      lqip: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABcQERQRDhcUEhQaGBcbIjklIh8fIkYyNSk5UkhXVVFIUE5bZoNvW2F8Yk5QcptzfIeLkpSSWG2grJ+OqoOPko3/2wBDARgaGiIeIkMlJUONXlBejY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY3/wAARCAAWABgDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAIDBAEF/8QAJRAAAgEEAgAGAwAAAAAAAAAAAQIDAAQRIRIxBRMiQVFhgbHx/8QAFgEBAQEAAAAAAAAAAAAAAAAAAgAB/8QAGREAAwEBAQAAAAAAAAAAAAAAAAECIRFB/9oADAMBAAIRAxEAPwDrWMckZMJElwknrUYyu+qm0F9LM0rnOG0rP1VLXcEHiqzQyBg2RKPzWqG6Ul48qXC4OHGN+9GqbWIfEvSUUCsbZuPlguGZNY0eh8f2lefDdcb23jdlVjIuNd7FKk2wtF7Wdw05IW3Ccvvl384rcbZjbY4xgnWtD9UpVJtLhmj8Ld57eQ+X6XB7PsaUpRnMFWn/2Q==",
+      w: 860, h: 801,
       tag: "敦煌 · 莫高窟 & 鸣沙山",
       title: "武周 · 愿见大唐，日月当空",
       desc: "着齐胸襦裙走进大漠敦煌，莫高窟的壁画诉说千年，鸣沙山的落日映着月牙泉。九张照片串联起一场跨越时空的盛唐之梦。" },
-    { image: "assets/qarhan-salt-lake.jpg", thumb: "assets/thumb/qarhan-salt-lake.jpg", thumbWebp: "assets/thumb/qarhan-salt-lake.webp", w: 720, h: 713,
+    { image: "assets/qarhan-salt-lake.jpg", thumb: "assets/thumb/qarhan-salt-lake.jpg", thumbWebp: "assets/thumb/qarhan-salt-lake.webp",
+      lqip: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABcQERQRDhcUEhQaGBcbIjklIh8fIkYyNSk5UkhXVVFIUE5bZoNvW2F8Yk5QcptzfIeLkpSSWG2grJ+OqoOPko3/2wBDARgaGiIeIkMlJUONXlBejY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY3/wAARCAAYABgDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAIBAwT/xAAmEAACAQQBAwMFAAAAAAAAAAABAgMABBESIQUTFDEyYRVBUZGx/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/xAAaEQADAQEBAQAAAAAAAAAAAAAAAQIRMRJB/9oADAMBAAIRAxEAPwD3yQXDSsfKfGTxv80W+V74xxyMytHwS59c/wBqJIpPqPaKDUqX93J5rRET1Z42Y9vtgryfXP4pb36TKwy1SZbmLfu8OPc5pVW0ZPUQurapq2dvvmlGtkxLktelwrcM4tzksTnPzXPxyb0J22K6bA4Prn9UpS6ZWFW4fyIiIcDcc4PFKUo9OuioU8P/2Q==",
+      w: 872, h: 864,
       tag: "青海 · 格尔木察尔汗",
       title: "察尔汗盐湖 · 生命里那磅礴的绿",
       desc: "「我生命里那磅礴的绿」—— 格尔木深处的察尔汗盐湖，翡翠色湖面与白色盐滩交织成极致的视觉诗篇，每一帧都是大自然的杰作。" },
-    { image: "assets/sky-mirror.jpg", thumb: "assets/thumb/sky-mirror.jpg", thumbWebp: "assets/thumb/sky-mirror.webp", w: 720, h: 690,
+    { image: "assets/sky-mirror.jpg", thumb: "assets/thumb/sky-mirror.jpg", thumbWebp: "assets/thumb/sky-mirror.webp",
+      lqip: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABcQERQRDhcUEhQaGBcbIjklIh8fIkYyNSk5UkhXVVFIUE5bZoNvW2F8Yk5QcptzfIeLkpSSWG2grJ+OqoOPko3/2wBDARgaGiIeIkMlJUONXlBejY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY3/wAARCAAXABgDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAIDBAH/xAAnEAABBAECAwkAAAAAAAAAAAABAAIDEQQSIRMxQRQVIiNCUWFxkf/EABYBAQEBAAAAAAAAAAAAAAAAAAEAAv/EABYRAQEBAAAAAAAAAAAAAAAAAAABEf/aAAwDAQACEQMRAD8A0Yjp+8Znujc1kl1ew+FcxjuIw+YK6EKTYAMl0mjpQ+lRQJa8Nt59N70tBtxS/tvicaNUCDtsUUcTHAy2PEZ53fsiKSLHyxWtrCao7rjMFzRqEI13zsIitS+GOZs0Z0mr33HL9REQn//Z",
+      w: 876, h: 840,
       tag: "青海 · 茶卡盐湖",
       title: "天空之镜 · 天地颠倒，云端漫步",
       desc: "海拔 3059 米的茶卡天空之镜，天地倒影浑然一体。九张照片记录下镜面般的湖面与漫步云端的诗意瞬间。" },
-    { image: "assets/xining.jpg", thumb: "assets/thumb/xining.jpg", thumbWebp: "assets/thumb/xining.webp", w: 720, h: 453,
+    { image: "assets/xining.jpg", thumb: "assets/thumb/xining.jpg", thumbWebp: "assets/thumb/xining.webp",
+      lqip: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABcQERQRDhcUEhQaGBcbIjklIh8fIkYyNSk5UkhXVVFIUE5bZoNvW2F8Yk5QcptzfIeLkpSSWG2grJ+OqoOPko3/2wBDARgaGiIeIkMlJUONXlBejY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY3/wAARCAAPABgDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAIDBP/EACQQAAICAQMCBwAAAAAAAAAAAAECAAMEERIxE0EFISIjMlFh/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAL/xAAYEQEBAAMAAAAAAAAAAAAAAAAAAgEREv/aAAwDAQACEQMRAD8A0WXOt4etXLhhpt8+8mFs3/Hgy64lnUJYEaH7EUVWbx7Z551EBPDnyasitSjdNmGoYQmmii4ZSMR6dw7/ALCRNbVU85f/2Q==",
+      w: 856, h: 538,
       tag: "青海 · 西宁",
       title: "西宁 · 从云端降落高原",
       desc: "从高空俯瞰黄土高原的千沟万壑与九曲黄河，海拔 2173 米的西宁是西北之行的起点 —— 出发本身就是最好的答案。" },
-    { image: "assets/jinan.jpg", thumb: "assets/thumb/jinan.jpg", thumbWebp: "assets/thumb/jinan.webp", w: 720, h: 463,
+    { image: "assets/jinan.jpg", thumb: "assets/thumb/jinan.jpg", thumbWebp: "assets/thumb/jinan.webp",
+      lqip: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABcQERQRDhcUEhQaGBcbIjklIh8fIkYyNSk5UkhXVVFIUE5bZoNvW2F8Yk5QcptzfIeLkpSSWG2grJ+OqoOPko3/2wBDARgaGiIeIkMlJUONXlBejY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY3/wAARCAAPABgDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAUBAwT/xAAnEAABAwMDAQkAAAAAAAAAAAABAgMEABEhBRJBMRMUMkJRUmFxgf/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABgRAQEBAQEAAAAAAAAAAAAAAAEAAjFB/9oADAMBAAIRAxEAPwC+a3GS87dGd5JO63P3mkSdNeDSlKjPB0ugpBbPhvnP6KcSIOprkrIabUgqWfL7sc+lQ5D1FM8qTGG0LFldoL2BPS5xg0dLUyFggB3vunsuMlIbeSQo45oppGYnCcwDEAZS4CVFYJHz1orOVexDy//Z",
+      w: 884, h: 568,
       tag: "山东 · 济南",
       title: "济南 · 泉城夜色明府城",
       desc: "泉城济南的明府城夜色，有老城的烟火气，也有千年古城的厚重。每一张照片都是一段老城故事。" }
@@ -1396,14 +1410,49 @@ function renderGallery(){
   resume.gallery.forEach((g,i)=>{
     const card=createEl('div','gallery-card reveal');
     card.style.animationDelay=(i*0.1)+'s';
-    const _t=g.thumb||g.image;
-    const _srcs=(g.thumbWebp?`<source srcset="${g.thumbWebp}" type="image/webp">`:'');
-    const _dim=(g.w&&g.h)?` width="${g.w}" height="${g.h}"`:'';
-    card.innerHTML=`<div class="gallery-img-wrap"><picture>${_srcs}<img src="${_t}"${_dim} alt="${g.title}" loading="lazy" decoding="async"></picture></div>
+    /* 卡片图优先用缩略图；离线单文件版没有 thumb，就用内联的 image */
+    const thumb=g.thumb||g.image;
+    const srcs=g.thumbWebp?`<source data-srcset="${g.thumbWebp}" type="image/webp">`:'';
+    const dim=(g.w&&g.h)?` width="${g.w}" height="${g.h}"`:'';
+    const bg=g.lqip?` style="background-image:url('${g.lqip}')"`:'';
+    /* img 先不给 src —— 等滑到附近由 warmGallery() 一次性把 5 张全部装上，
+       这样请求是同时发出的（HTTP/2 多路复用），而不是 lazy 那样一张张来 */
+    card.innerHTML=`<div class="gallery-img-wrap"${bg}><picture>${srcs}<img data-src="${thumb}"${dim} alt="${g.title}" decoding="async"></picture></div>
       <div class="gallery-info"><span class="gallery-tag">${g.tag}</span><h3>${g.title}</h3><p>${g.desc}</p></div>`;
+    const im=card.querySelector('img');
+    const reveal=()=>im.classList.add('g-loaded');
+    im.addEventListener('load',reveal);
+    im.addEventListener('error',reveal);
     card.addEventListener('click',()=>openLightbox(i));
     grid.appendChild(card);
   });
+}
+/* 一次性并发预热：给 picture 的 source 和 img 同时装上真实地址 */
+function warmGallery(){
+  const host=$('#galleryGrid');
+  if(!host||host.dataset.warm)return;
+  host.dataset.warm='1';
+  $$('#galleryGrid picture').forEach(p=>{
+    const s=p.querySelector('source[data-srcset]');
+    if(s){s.srcset=s.dataset.srcset;s.removeAttribute('data-srcset');}
+    const im=p.querySelector('img[data-src]');
+    if(im){
+      im.src=im.dataset.src;
+      im.removeAttribute('data-src');
+      if(im.complete&&im.naturalWidth)im.classList.add('g-loaded');
+    }
+  });
+}
+function initGalleryWarm(){
+  const host=$('#galleryGrid');
+  if(!host)return;
+  if(!('IntersectionObserver' in window)){warmGallery();return;}   // 老浏览器：直接加载
+  const io=new IntersectionObserver(es=>{
+    for(const e of es){ if(e.isIntersecting){ warmGallery(); io.disconnect(); return; } }
+  },{rootMargin:'1000px 0px 1000px 0px'});
+  io.observe(host);
+  /* 兜底：若用户用锚点直接跳到相册、或观察器因任何原因没触发，2.5s 后强开 */
+  setTimeout(()=>{ if(!host.dataset.warm) warmGallery(); },2500);
 }
 function renderSkills(){
   const c=$('#skillsContainer');
@@ -1528,6 +1577,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   renderExperience();
   renderProjects();
   renderGallery();
+  initGalleryWarm();
   renderSkills();
   renderEducation();
   renderContact();
