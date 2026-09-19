@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /offline.html
 
 Sitemap: https://yanyu473.github.io/rzxjianli/sitemap.xml
